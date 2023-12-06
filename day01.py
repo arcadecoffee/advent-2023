@@ -12,7 +12,7 @@ from aoc import get_daily_input
 YEAR = 2023
 DAY = 1
 
-TEST = sys.argv[1] == "test" if len(sys.argv) > 1 else False
+TEST = sys.argv[1] == "test" if len(sys.argv) > 1 else True
 
 TEST_DATA = """
 1abc2
@@ -20,7 +20,7 @@ pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet
 two1nine
-eightwothree
+eightwo0three
 abcone2threexyz
 xtwone3four
 4nineeightseven2
@@ -56,8 +56,8 @@ def get_digits_and_words(input: str) -> int:
 
 
 def get_digits(input: str) -> int:
-    first = translate_digit(re.match(r".*?(\d)", input)[1])
-    last = translate_digit(re.match(r".*(\d).*?", input)[1])
+    first = re.match(r".*?(\d)", input)[1]
+    last = re.match(r".*(\d).*?", input)[1]
     return int(first + last)
 
 
