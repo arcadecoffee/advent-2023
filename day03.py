@@ -41,19 +41,10 @@ def main() -> None:
     for r in range(1, len(data) - 1):
         for m in re.finditer(r"\d+", data[r]):
             adjacents = data[r - 1][m.start() - 1:m.end() + 1] + data[r][m.start() - 1] + data[r][m.end()] + data[r + 1][m.start() - 1:m.end() + 1]
-            valid = any([n != "." for n in adjacents])
-            numbers.append(
-                {
-                    "value": int(m.group()),
-                    "row": r,
-                    "start": m.start(),
-                    "end": m.end(),
-                    "adjacents": adjacents,
-                    "valid": valid
-                }
-            )
+            if any([n != "." for n in adjacents]):
+                numbers.append(int(m.group()))
 
-    part_1 = sum([n["value"] for n in numbers if n["valid"]])
+    part_1 = sum(numbers)
     print(f"Part 1: {part_1}")
 
     part_2 = -1
