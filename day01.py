@@ -12,7 +12,7 @@ from aoc import get_daily_input
 YEAR = 2023
 DAY = 1
 
-TEST = sys.argv[1] == "test" if len(sys.argv) > 1 else True
+TEST = sys.argv[1] == "test" if len(sys.argv) > 1 else False
 
 TEST_DATA = """
 1abc2
